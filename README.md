@@ -1,7 +1,7 @@
 # SonarQube Action
 
 This action scans a java maven project with SonarQube. Includes:
-- Does not require changes in the pom.xml, all configuration is read from sonar-project.properties
+- Does not require any change in the `pom.xml`, all configuration is read from `sonar-project.properties`
 - Cache setup and compilation
 - Optional restore of one or more artifacts to send additional info to SonarQube (e.g. coverage)
 - Check the quality gate

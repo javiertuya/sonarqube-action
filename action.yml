@@ -83,6 +83,7 @@ runs:
     # Keeps independent from the pom.xml
     - name: Download SonarScanner
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip && unzip -q sonarscanner.zip
     - name: SonarQube Analysis
       env:
