@@ -1,32 +1,26 @@
 # SonarQube Action
 
-working...
-
-This action publishes maven branch snapshots to the GitHub Packages Maven registry.
-Each time that it is executed, builds the system and publishes a snapshot with the version in the form
-`<version number>-<branch name>-SNAPSHOT`.
+This action scans a java maven project with SonarQube. Includes:
+- Cache setup and compilation
+- Optional restore of one or more artifacts to send additional info to SonarQube (e.g. coverage)
+- Check the quality gate
+- All configuration is read from sonar-project.properties
 
 ## Inputs
 
-- `token` *(Required)*: Token to access GitHub Packages
-- `working-directory` *(Default to root directory)*: The name of the working directory from which the mvn deploy is executed'
-- `java-version` *(Required)*: Java version used to build the package
-- `mvn-deploy-args`: Optional arguments to be passed to the `mvn deploy` command
-- `delete-old-snapshots` *(Default false)*: If true, keeps only `min-snapshots-to-keep` branch snapshots (versions)
-- `min-snapshots-to-keep` *(Default 2)*: The number of latest branch snapshots (versions) to keep if `delete-old-snapshots` is true
+- `github-token` *(Required)*: Token to access GitHub (needed to check the quality gate)
+- `sonar-token` *(Required)*: Token to access SonarQube
+- `working-directory` *(Default to root directory)*: The name of the working directory from which the scan is executed
+- `java-version` *(Default 11)*: Java version used run the scans (JDK 11 is the minium required)
+- `restore-artifact-name<N>`, Where `<N>` is a number (1 or 2). Optional name of an artifact to be restored to send additional info to SonarQube (e.g. coverage reports)
+- `restore-artifact-path1<N>` *(Default to the `working-directory`)*: Path where `restore-artifact-name<N>` will be restored (relative to the working directory)'
 
 ## Example usage
 
 ```yaml
-      - uses: javiertuya/branch-snapshots-action@v1.1.0
+      - uses: javiertuya/sonarqube-action@main
         with: 
-          token: ${{ secrets.GITHUB_TOKEN }}
-          working-directory: test
-          java-version: '8'
-          mvn-deploy-args: '-P publish-github -DskipTests=true -Dmaven.test.failure.ignore=false -U --no-transfer-progress'
-          delete-old-snapshots: true
-          min-snapshots-to-keep: 4
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          sonar-token: ${{ secrets.SONAR_TOKEN }}
+          restore-artifact-name1: "test-coverage-files"
 ```
-
-This action is better used from a dedicated job or workflow, see job `publish-java-snapshot` in:
-[.github/workflows/test.yml](https://github.com/javiertuya/branch-snapshots-action/blob/main/.github/workflows/test.yml)

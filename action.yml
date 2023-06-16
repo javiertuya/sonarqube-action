@@ -3,13 +3,13 @@ name: 'Branch Snapshots Action'
 description: 'This action publishes branch snapshots to the GitHub Packages Maven registry'
 inputs:
   github-token:
-    description: 'Token to access GitHub Packages'
+    description: 'Token to access GitHub (needed to check the quality gate)'
     required: true
   sonar-token:
-    description: 'Token to access GitHub Packages'
+    description: 'Token to access SonarQube'
     required: true
   working-directory:
-    description: 'The name of the working directory from which the mvn deploy is executed'
+    description: 'The name of the working directory from which the scan is executed'
     required: false
     default: "."
   java-version:
@@ -71,13 +71,13 @@ runs:
       uses: actions/download-artifact@v3
       with:
         name: ${{ inputs.restore-artifact-name1 }}
-        path: ${{ inputs.restore-artifact-path1 }}
+        path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path1 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name2 != ''
       uses: actions/download-artifact@v3
       with:
         name: ${{ inputs.restore-artifact-name2 }}
-        path: ${{ inputs.restore-artifact-path2 }}
+        path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path2 }}
 
     #Manual exeuction, maven plugin does not read sonar-project.properties nor .sonarcloud.properties
     - name: Download sonarscanner
