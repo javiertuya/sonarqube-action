@@ -79,17 +79,26 @@ runs:
         name: ${{ inputs.restore-artifact-name2 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path2 }}
 
-    #Manual exeuction, maven plugin does not read sonar-project.properties nor .sonarcloud.properties
-    - name: Download sonarscanner
+    # Manual exeuction, maven plugin does not read sonar-project.properties nor .sonarcloud.properties
+    # Keeps independent from the pom.xml
+    - name: Download SonarScanner
       shell: bash
-      run: curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip && unzip -q sonarscanner.zip
+      run: curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip && unzip -q sonarscanner.zip
     - name: SonarQube Analysis
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ inputs.sonar-token }}
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+      run: sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+    #Option using the official action (analysis takes more time)
+    #- name: SonarQube Scan
+    #  uses: sonarsource/sonarqube-scan-action@v1.2.0
+    #  with:
+    #    projectBaseDir: ${{ inputs.working-directory }}
+    #  env:
+    #    SONAR_TOKEN: ${{ inputs.sonar-token }}
+    #    SONAR_HOST_URL: "https://sonarcloud.io"
 
     - name: SonarQube Quality Gate check
       uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
