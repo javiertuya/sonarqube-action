@@ -8,6 +8,10 @@ inputs:
   sonar-token:
     description: 'Token to access SonarQube'
     required: true
+  sonar-host-url:
+    description: 'Tells the scanner where SonarQube is hosted'
+    required: false
+    default: "https://sonarcloud.io"
   working-directory:
     description: 'The name of the working directory from which the scan is executed'
     required: false
@@ -91,7 +95,7 @@ runs:
         SONAR_TOKEN: ${{ inputs.sonar-token }}
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+      run: sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner -Dsonar.host.url=${{ inputs.sonar-host-url }}
     #Option using the official action (analysis takes more time)
     #- name: SonarQube Scan
     #  uses: sonarsource/sonarqube-scan-action@v1.2.0
