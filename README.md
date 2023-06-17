@@ -1,4 +1,4 @@
-# SonarQube Action
+# SonarQube Maven Scan Action
 
 This action scans a java maven project with SonarQube. Features:
 - Does not require any change in the `pom.xml`, all configuration is read from `sonar-project.properties`

@@ -1,5 +1,5 @@
 # action.yml
-name: 'Branch Snapshots Action'
+name: 'SonarQube Maven Scan'
 description: 'This action publishes branch snapshots to the GitHub Packages Maven registry'
 inputs:
   github-token:
