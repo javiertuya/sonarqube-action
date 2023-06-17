@@ -1,6 +1,6 @@
 # action.yml
 name: 'SonarQube Maven Scan'
-description: 'This action publishes branch snapshots to the GitHub Packages Maven registry'
+description: 'Scans a java maven project with SonarQube, restores artifacts and checks quality gate'
 inputs:
   github-token:
     description: 'Token to access GitHub (needed to check the quality gate)'
