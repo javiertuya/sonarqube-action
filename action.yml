@@ -89,6 +89,8 @@ runs:
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: mvn test-compile -U --no-transfer-progress
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }} # needed if using github packages
 
     - name: Restore test reports
       if: inputs.restore-artifact-name1 != ''
