@@ -4,6 +4,4 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
-    assignees:
-      - "javiertuya" 
     open-pull-requests-limit: 20
