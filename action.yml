@@ -94,25 +94,25 @@ runs:
 
     - name: Restore test reports
       if: inputs.restore-artifact-name1 != ''
-      uses: actions/download-artifact@v3.0.2
+      uses: actions/download-artifact@v4.0.0
       with:
         name: ${{ inputs.restore-artifact-name1 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path1 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name2 != ''
-      uses: actions/download-artifact@v3.0.2
+      uses: actions/download-artifact@v4.0.0
       with:
         name: ${{ inputs.restore-artifact-name2 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path2 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name3 != ''
-      uses: actions/download-artifact@v3.0.2
+      uses: actions/download-artifact@v4.0.0
       with:
         name: ${{ inputs.restore-artifact-name3 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path3 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name4 != ''
-      uses: actions/download-artifact@v3.0.2
+      uses: actions/download-artifact@v4.0.0
       with:
         name: ${{ inputs.restore-artifact-name4 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path4 }}
