@@ -23,7 +23,7 @@ inputs:
   java-version:
     description: 'Java version used to build the package'
     required: true
-    default: "11"
+    default: "17"
   # As actions do not support arrays, must duplicate the pairs artifact name/path
   restore-artifact-name1:
     description: 'Optional name of an artifact to be restored to send additional info to SonarQube (e.g. coverage reports)'
@@ -65,7 +65,7 @@ runs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-    - name: Set up JDK (minimum 11)
+    - name: Set up JDK (minimum 17 for SonarCloud)
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
