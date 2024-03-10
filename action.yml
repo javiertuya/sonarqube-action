@@ -17,7 +17,11 @@ inputs:
     required: false
     default: "https://sonarcloud.io"
   working-directory:
-    description: 'The name of the working directory from which the scan is executed'
+    description: 'The name of the working directory from which the scan is executed (where `sonar-project.properties` is located)'
+    required: false
+    default: "."
+  java-directory:
+    description: 'The name of the directory (relative to `working-directory`) where the java project is compiled (where `pom.xml` is located)'
     required: false
     default: "."
   java-version:
@@ -87,7 +91,7 @@ runs:
     #Compile and restore reports
     - name: Generate classes
       shell: bash
-      working-directory: ${{ inputs.working-directory }}
+      working-directory: ${{ inputs.working-directory }}/${{ inputs.java-directory }}
       run: mvn test-compile -U --no-transfer-progress
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }} # needed if using github packages
