@@ -61,6 +61,22 @@ inputs:
     description: 'Path where `restore-artifact-name4` will be restored (relative to the working directory)'
     required: false
     default: "."
+  restore-artifact-name5:
+    description: 'Optional name of an a third artifact to be restored to send additional info to SonarQube'
+    required: false
+    default: ""
+  restore-artifact-path5:
+    description: 'Path where `restore-artifact-name5` will be restored (relative to the working directory)'
+    required: false
+    default: "."
+  restore-artifact-name6:
+    description: 'Optional name of an a fourth artifact to be restored to send additional info to SonarQube'
+    required: false
+    default: ""
+  restore-artifact-path6:
+    description: 'Path where `restore-artifact-name6` will be restored (relative to the working directory)'
+    required: false
+    default: "."
 
 runs:
   using: "composite"
@@ -120,6 +136,18 @@ runs:
       with:
         name: ${{ inputs.restore-artifact-name4 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path4 }}
+    - name: Restore test reports
+      if: inputs.restore-artifact-name5 != ''
+      uses: actions/download-artifact@v4.1.7
+      with:
+        name: ${{ inputs.restore-artifact-name5 }}
+        path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path5 }}
+    - name: Restore test reports
+      if: inputs.restore-artifact-name6 != ''
+      uses: actions/download-artifact@v4.1.7
+      with:
+        name: ${{ inputs.restore-artifact-name6 }}
+        path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path6 }}
 
     # Manual exeuction, maven plugin does not read sonar-project.properties nor .sonarcloud.properties
     # Keeps independent from the pom.xml
