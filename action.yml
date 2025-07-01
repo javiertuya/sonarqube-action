@@ -172,7 +172,7 @@ runs:
     #    SONAR_HOST_URL: "https://sonarcloud.io"
 
     - name: SonarQube Quality Gate check
-      uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
+      uses: sonarsource/sonarqube-quality-gate-action@v1.2.0
       #timeout not allowed in an action, if needed, set timeout when calling this action
       #timeout-minutes: 5
       env:
