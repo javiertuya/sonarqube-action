@@ -82,11 +82,11 @@ runs:
   using: "composite"
   steps:
     #Recommended Sonarcloud configuration
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - name: Set up JDK (minimum 17 for SonarCloud)
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: ${{ inputs.java-version }}
@@ -114,37 +114,37 @@ runs:
 
     - name: Restore test reports
       if: inputs.restore-artifact-name1 != ''
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v5.0.0
       with:
         name: ${{ inputs.restore-artifact-name1 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path1 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name2 != ''
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v5.0.0
       with:
         name: ${{ inputs.restore-artifact-name2 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path2 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name3 != ''
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v5.0.0
       with:
         name: ${{ inputs.restore-artifact-name3 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path3 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name4 != ''
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v5.0.0
       with:
         name: ${{ inputs.restore-artifact-name4 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path4 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name5 != ''
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v5.0.0
       with:
         name: ${{ inputs.restore-artifact-name5 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path5 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name6 != ''
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v5.0.0
       with:
         name: ${{ inputs.restore-artifact-name6 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path6 }}
