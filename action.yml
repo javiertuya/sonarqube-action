@@ -130,49 +130,49 @@ runs:
 
     - name: Restore test reports
       if: inputs.restore-artifact-name1 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name1 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path1 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name2 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name2 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path2 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name3 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name3 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path3 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name4 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name4 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path4 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name5 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name5 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path5 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name6 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name6 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path6 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name7 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name7 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path7 }}
     - name: Restore test reports
       if: inputs.restore-artifact-name8 != ''
-      uses: actions/download-artifact@v6.0.0
+      uses: actions/download-artifact@v7.0.0
       with:
         name: ${{ inputs.restore-artifact-name8 }}
         path: ${{ inputs.working-directory }}/${{ inputs.restore-artifact-path8 }}
